@@ -12,6 +12,10 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+
 
 @NgModule({
   imports: [
@@ -22,7 +26,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     RouterModule,
     AppRoutingModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
   ],
   declarations: [
     AppComponent,

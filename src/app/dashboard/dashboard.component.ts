@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef} from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as Chartist from 'chartist';
 
+
+// import {MatDatepickerModule} from '@angular/material/datepicker'; 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -57,8 +60,37 @@ export class DashboardComponent implements OnInit {
       return "rgb(" + r + ", " + g + ", " + b + ")";
     }
   }
-  constructor() { }
+  vehicalData = [] 
+   vehicalObj ={
+    "v_n":"",
+    "date":""
+  }
+  modalRef: BsModalRef;
+  constructor(private modalService: BsModalService) { 
+     this.vehicalData =[
+      {"v_n": "PB09-5309", "date":"26-may-2019"},
+      {"v_n": "PB09-5309", "date":"2-may-2019"},
+      {"v_n": "PB09-5309", "date":"29-may-2019"},
+      {"v_n": "PB09-5309", "date":"8-may-2019"},
+      {"v_n": "PB09-5309", "date":"6-may-2019"},
+      {"v_n": "PB09-5309", "date":"26-june-2019"},
+      {"v_n": "PB09-5309", "date":"26-jan-2019"},
+      {"v_n": "PB09-5309", "date":"26-feb-2019"},
+      {"v_n": "PB09-5309", "date":"26-jul-2019"},
+      
 
+    ]
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  addVehical(){
+    this.vehicalData.push(this.vehicalObj);
+    
+    console.log(this.vehicalObj);
+  }
   ngOnInit() {
     this.chartColor = "#FFFFFF";
     this.canvas = document.getElementById("bigDashboardChart");
